@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
+import Monitoring from "./pages/monitoring";
 // import Monitoramento from "./pages/Monitoramento";
 // import Manutencao from "./pages/Manutencao";
 // import Relatorios from "./pages/Relatorios";
@@ -13,9 +14,10 @@ const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={<Monitoring />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        {/* <Route path="/monitoramento" element={<Monitoramento />} />
+        <Route path="/monitoring" element={<Monitoring />} />
+        {/* 
         <Route path="/manutencao" element={<Manutencao />} />
         <Route path="/relatorios" element={<Relatorios />} />
         <Route path="/perfil" element={<Perfil />} />
