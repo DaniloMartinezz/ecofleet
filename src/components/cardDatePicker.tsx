@@ -1,74 +1,96 @@
 import React, { useState } from 'react';
-import DatePicker, { registerLocale } from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { ptBR } from 'date-fns/locale'; // Use ptBR para português do Brasil
+import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameMonth, isSameDay } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
-registerLocale('pt-BR', ptBR);
+const DatePicker: React.FC = () => {
+  const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
-const CardDatePicker: React.FC = () => {
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
-  const years = Array.from(new Array(10), (val, index) => new Date().getFullYear() + index);
-  const months = [
-    'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-  ];
+  const renderHeader = () => {
+    return (
+      <div className="flex justify-between items-center mb-2">
+        <button onClick={() => setCurrentMonth(subMonths(currentMonth, 1))} className="text-green-600">
+          &#60;
+        </button>
+        <div className="flex space-x-4">
+          <span className="font-medium text-lg text-green-600">{format(currentMonth, 'MMMM', { locale: ptBR })}</span>
+          <span className="font-medium text-lg text-green-600">{format(currentMonth, 'yyyy')}</span>
+        </div>
+        <button onClick={() => setCurrentMonth(addMonths(currentMonth, 1))} className="text-green-600">
+          &#62;
+        </button>
+      </div>
+    );
+  };
+
+  const renderDays = () => {
+    const dateFormat = 'iiii';
+    const days = [];
+
+    let startDate = startOfWeek(currentMonth, { locale: ptBR });
+
+    for (let i = 0; i < 7; i++) {
+      days.push(
+        <div className="text-xs font-medium text-center text-gray-500" key={i}>
+          {format(addDays(startDate, i), dateFormat, { locale: ptBR }).substring(0, 2)}
+        </div>
+      );
+    }
+
+    return <div className="grid grid-cols-7">{days}</div>;
+  };
+
+  const renderCells = () => {
+    const monthStart = startOfMonth(currentMonth);
+    const monthEnd = endOfMonth(monthStart);
+    const startDate = startOfWeek(monthStart);
+    const endDate = endOfWeek(monthEnd);
+
+    const dateFormat = 'd';
+    const rows = [];
+
+    let days = [];
+    let day = startDate;
+    let formattedDate = '';
+
+    while (day <= endDate) {
+      for (let i = 0; i < 7; i++) {
+        formattedDate = format(day, dateFormat);
+        const cloneDay = day;
+        days.push(
+          <div
+            className={`p-2 mx-auto text-center cursor-pointer rounded-full ${
+              !isSameMonth(day, monthStart)
+                ? 'text-gray-400'
+                : isSameDay(day, selectedDate)
+                ? 'bg-green-600 text-white'
+                : 'text-gray-900'
+            }`}
+            key={day.toString()}
+            onClick={() => setSelectedDate(cloneDay)}
+          >
+            <span className="block w-8 h-8 leading-8">{formattedDate}</span>
+          </div>
+        );
+        day = addDays(day, 1);
+      }
+      rows.push(
+        <div className="grid grid-cols-7" key={day.toString()}>
+          {days}
+        </div>
+      );
+      days = [];
+    }
+    return <div className="">{rows}</div>;
+  };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md mx-auto md:max-w-2xl flex justify-center items-center">
-      <DatePicker
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-        locale="pt-BR"
-        dateFormat="dd MMMM yyyy"
-        renderCustomHeader={({
-          date,
-          changeYear,
-          changeMonth,
-          decreaseMonth,
-          increaseMonth,
-          prevMonthButtonDisabled,
-          nextMonthButtonDisabled
-        }) => (
-          <div className="react-datepicker__header__dropdown">
-            <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled} className="text-[#2B3674]">
-              {"<"}
-            </button>
-            <div className="flex space-x-0">
-              <select
-                value={date.getFullYear()}
-                onChange={({ target: { value } }) => changeYear(Number(value))}
-                className="bg-[#F4F7FE] border-none rounded-full text-center outline-none font-bold text-lg p-2"
-              >
-                {years.map((year) => (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                ))}
-              </select>
-              <select
-                value={months[date.getMonth()]}
-                onChange={({ target: { value } }) => changeMonth(months.indexOf(value))}
-                className="bg-[#F4F7FE] border-none rounded-full text-center outline-none font-bold text-lg p-2"
-              >
-                {months.map((month, index) => (
-                  <option key={index} value={month}>
-                    {month}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <button onClick={increaseMonth} disabled={nextMonthButtonDisabled} className="text-[#2B3674]">
-              {">"}
-            </button>
-          </div>
-        )}
-        inline
-        calendarClassName="w-full text-center "
-        dayClassName={(date) => 
-          date.getDate() === new Date().getDate() ? 'bg-green-500 text-white rounded-full' : ''
-        }
-      />
+    <div className="bg-white rounded-lg shadow p-4 w-80">
+      {renderHeader()}
+      {renderDays()}
+      {renderCells()}
     </div>
   );
 };
 
-export default CardDatePicker;
+export default DatePicker;

@@ -41,6 +41,9 @@ export default {
           900: '#FAFAFA',
           950:'#F5F5F5'
         },
+        blueText: {
+          '100':'#2B3674',
+        },
         green: {
           'green': '#3A5B22',
         },
