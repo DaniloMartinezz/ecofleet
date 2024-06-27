@@ -2,6 +2,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Profile from '../assets/profile.png'
+import Maintenance from '../pages/maintenance';
 import {
   XMarkIcon,
   ArrowTrendingUpIcon,
@@ -47,7 +48,7 @@ const Navbar: React.FC<{ isOpen: boolean; setIsOpen: (isOpen: boolean) => void }
               </li>
               <li className="mb-4">
                 <NavLink
-                  to="/monitoramento"
+                  to="/monitoring"
                   className={({ isActive }) =>
                     `flex items-center p-2 rounded ${isActive ? 'bg-gray-200' : 'hover:bg-gray-100'}`
                   }
@@ -59,7 +60,7 @@ const Navbar: React.FC<{ isOpen: boolean; setIsOpen: (isOpen: boolean) => void }
               </li>
               <li className="mb-4">
                 <NavLink
-                  to="/manutencao"
+                  to="/maintenance"
                   className={({ isActive }) =>
                     `flex items-center p-2 rounded ${isActive ? 'bg-gray-200' : 'hover:bg-gray-100'}`
                   }
@@ -69,21 +70,12 @@ const Navbar: React.FC<{ isOpen: boolean; setIsOpen: (isOpen: boolean) => void }
                   <span>Manutenção</span>
                 </NavLink>
               </li>
+
+
+
               <li className="mb-4">
                 <NavLink
-                  to="/relatorios"
-                  className={({ isActive }) =>
-                    `flex items-center p-2 rounded ${isActive ? 'bg-gray-200' : 'hover:bg-gray-100'}`
-                  }
-                  onClick={() => setIsOpen(false)}
-                >
-                  <PresentationChartBarIcon className="w-6 h-6 mr-2 text-green-green" />
-                  <span>Relatórios</span>
-                </NavLink>
-              </li>
-              <li className="mb-4">
-                <NavLink
-                  to="/perfil"
+                  to="/profile"
                   className={({ isActive }) =>
                     `flex items-center p-2 rounded ${isActive ? 'bg-gray-200' : 'hover:bg-gray-100'}`
                   }
