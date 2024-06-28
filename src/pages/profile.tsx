@@ -18,20 +18,23 @@ const Profile: React.FC = () => {
           <h1 className="pb-3 text-2xl text-dark-300">Meu Perfil</h1>
           {!isMenuOpen && (
             <button className="md:hidden text-green-green" onClick={() => setIsMenuOpen(true)}>
-              <Bars3Icon className="w-6 h-6 mb-3"/>
+              <Bars3Icon className="w-6 h-6 mb-3" />
             </button>
           )}
         </div>
         <hr />
-          <div className="py-5">
-            <ProfileHeader/>
+        <div className="py-5">
+          <ProfileHeader />
+        </div>
+        <div className="md:flex">
+          <div className="py-5 md:mr-5">
+            <ProfileUpgrades />
           </div>
           <div className="py-5">
-          <ProfileUpgrades />
+            <ProfileInfo />
           </div>
-          <div className="py-5">
-            <ProfileInfo/>
-          </div>
+        </div>
+
 
       </div>
     </div>

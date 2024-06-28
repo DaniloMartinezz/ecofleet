@@ -23,7 +23,7 @@ const Navbar: React.FC<{ isOpen: boolean; setIsOpen: (isOpen: boolean) => void }
       <div
         className={`${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out md:translate-x-0 md:relative md:shadow-none z-50`}
+        } fixed inset-y-0 left-0 w-64 md:w-[25rem] bg-white shadow-lg transform transition-transform duration-300 ease-in-out md:translate-x-0 md:relative md:shadow-none z-50`}
       >
         <div className="flex flex-col h-full p-4">
           <div className="flex justify-between items-center mb-4 md:hidden">

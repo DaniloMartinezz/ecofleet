@@ -23,7 +23,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progress, bgColor }) => {
 
 const CardProgress: React.FC = () => {
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md mx-auto md:max-w-2xl">
+    <div className="bg-white shadow-md rounded-lg p-6 w-full  mx-auto md:w-[92vh]">
       <div className="flex flex-col">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-xl text-[#2B3674] font-semibold">Progresso Mensal</h1>

@@ -78,7 +78,7 @@ const TaskItem: React.FC<TaskProps> = ({ task, index, moveTask, toggleTask }) =>
           {task.text}
         </span>
       </div>
-      <div className="text-gray-400 cursor-pointer">⋮⋮</div>
+      <div className="text-gray-400 cursor-pointer md:ml-24">⋮⋮</div>
     </div>
   );
 };
@@ -123,10 +123,10 @@ const CardTasks: React.FC = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="bg-white shadow-md rounded-lg p-4 w-full max-w-md mx-auto">
+      <div className="bg-white shadow-md rounded-lg p-4 w-full  mx-auto">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold">Tasks</h2>
-          <div className="text-gray-400 cursor-pointer">⋮⋮</div>
+          <div className="text-gray-400  cursor-pointer">⋮⋮</div>
         </div>
         {tasks.map((task, index) => (
           <TaskItem

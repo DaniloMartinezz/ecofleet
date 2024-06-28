@@ -55,7 +55,7 @@ const options = {
 
 const CardTotalCostGraph: React.FC = () => {
   return (
-    <div className="bg-light shadow-md rounded-lg p-4 w-full max-w-md mx-auto md:max-w-2xl">
+    <div className="bg-light shadow-md rounded-lg p-4 w-full ">
       <div className="flex flex-col md:flex-row py-5 justify-between ">
         <div className="flex-1 md:pr-6">
           <div className="text-xs text-gray-400 uppercase">Esse mês</div>
@@ -67,7 +67,7 @@ const CardTotalCostGraph: React.FC = () => {
             <div className="text-sm text-green-500 font-medium">Monitoramento</div>
           </div>
         </div>
-        <div className="w-full h-40 md:w-1/2 mt-4 md:mt-0">
+        <div className="w-full h-48  mt-4 md:w-[65vh]">
           <Line data={data} options={options} />
         </div>
       </div>

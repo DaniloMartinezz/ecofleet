@@ -5,7 +5,7 @@ import { ClockIcon } from '@heroicons/react/24/outline';
 
 const cardMonitoringFeedback: React.FC = () => {
     return (
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-6 md:w-[90%]">
 
             <div className="flex  items-center">
                 <div className="p-2 bg-green-green rounded-xl w-12 h-12  flex justify-center items-center">
@@ -22,7 +22,7 @@ const cardMonitoringFeedback: React.FC = () => {
                 <div className="flex items-center"><ClockIcon className="w-6 h-6 text-green-green"/><p className="pl-3 font-semibold text-dark-200">05 minutos</p></div>
             </div>
 
-            <div className="pt-5 flex justify-between items-center">
+            <div className="py-6 flex justify-between items-center">
                 <AvatarCirclesDemo />
                 <button className="p-3 px-8 bg-green-green text-white rounded-2xl">Começar</button>
             </div>

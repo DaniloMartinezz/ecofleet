@@ -9,6 +9,7 @@ import CardCupom from '../components/cardCupom';
 import CardMonitoringDailyGraph from '../components/monitoring/cardMonitoringDailyGraph';
 import CardMonitoringFeedback from '../components/monitoring/cardMonitoringFeedback';
 import CardResultsGraph from '../components/cardResultsGraph';
+import CardTasks from '../components/cardTasks';
 const Monitoring: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -20,32 +21,40 @@ const Monitoring: React.FC = () => {
           <h1 className="pb-3 text-2xl text-dark-300">Monitoramento</h1>
           {!isMenuOpen && (
             <button className="md:hidden text-green-green" onClick={() => setIsMenuOpen(true)}>
-              <Bars3Icon className="w-6 h-6 mb-3"/>
+              <Bars3Icon className="w-6 h-6 mb-3" />
             </button>
           )}
         </div>
         <hr />
-          <div className="py-5">
-            <CardTotalCostGraph/>
+        <div className="md:flex  md:items-center md:p-5">
+          <div className="py-5 md:py-0 md:mr-5">
+            <CardTotalCostGraph />
           </div>
-          <div className="">
-            <CardProgress/>
+          <div className="py-5 md:py-0">
+            <CardMonitoringDailyGraph />
           </div>
-          <div className="mt-5 flex justify-center items-center">
-            <CardDatePicker/>
+        </div>
+        <div className="md:flex  md:items-center md:p-5 ">
+          <div className="md:mr-5">
+            <CardProgress />
           </div>
-          <div className="py-5">
-          <CardCupom />
+          <div className="py-5 md:py-0">
+            <CardMonitoringFeedback />
+          </div>
         </div>
-        <div className="py-5">
-          <CardMonitoringDailyGraph/>
+
+          <div className="md:flex md:items-center md:p-0 md:justify-around">
+          <div className="mt-5 flex justify-center items-center md:mr-5">
+          <CardDatePicker />
         </div>
-        <div className="py-5">
-          <CardMonitoringFeedback/>
+        <div className="py-5 md:py-0">
+          <CardTasks />
         </div>
-        <div className="py-5">
-          <CardResultsGraph/>
+        <div className="py-5 md:py-0 md:mr-5">
+          <CardResultsGraph />
         </div>
+          </div>
+
 
       </div>
     </div>

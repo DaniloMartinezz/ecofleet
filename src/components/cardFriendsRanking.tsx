@@ -22,7 +22,7 @@ const CardFriendsRanking: React.FC = () => {
   const sortedFriends = [...friendsData].sort((a, b) => b.points - a.points);
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 w-full max-w-md mx-auto font-inter">
+    <div className="bg-white shadow-md rounded-lg p-4 w-full  md:w-[65vh] mr-5 font-inter">
       <h2 className="text-xl font-semibold mb-4">Friends Ranking</h2>
       <ul>
         {sortedFriends.map((friend, index) => (
