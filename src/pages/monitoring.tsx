@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '../components/navbar';
-import { Bars3Icon } from '@heroicons/react/24/outline';
 import CardTotalCostGraph from '../components/cardTotalCoastGraph';
 import CardProgress from '../components/cardProgress';
 import CardDatePicker from '../components/cardDatePicker';
-import CardCupom from '../components/cardCupom';
 import CardMonitoringDailyGraph from '../components/monitoring/cardMonitoringDailyGraph';
 import CardMonitoringFeedback from '../components/monitoring/cardMonitoringFeedback';
 import CardResultsGraph from '../components/cardResultsGraph';

@@ -23,8 +23,8 @@ const VehicleData: React.FC = () => {
           { label: 'Modelo', value: 'Toyota Corolla' },
           { label: 'Placa', value: 'ABC - 1234' },
           { label: 'Ano', value: '2019' },
-          { label: 'Cor', value: 'Preto' }, // Informação adicional
-          { label: 'Manutenção', value: 'Última revisão em 01/2023' } // Informação adicional
+          { label: 'Cor', value: 'Preto' }, 
+          { label: 'Manutenção', value: 'Última revisão em 01/2023' } 
         ].map((item, index) => (
           <motion.div
             key={index}

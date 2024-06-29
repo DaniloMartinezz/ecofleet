@@ -4,7 +4,7 @@ import { useTheme } from '../../context/ThemeContext';
 
 const CardCarSimpleInfo: React.FC = () => {
   const { theme } = useTheme();
-  
+
   return (
     <div className={`shadow-md rounded-2xl p-3 font-inter relative overflow-hidden ${theme === 'dark' ? 'bg-dark-100' : 'bg-white'}`}>
       <div className="relative w-full h-full flex justify-center items-center">

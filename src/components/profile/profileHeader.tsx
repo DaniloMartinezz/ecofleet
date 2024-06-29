@@ -6,7 +6,7 @@ import { useTheme } from '../../context/ThemeContext';
 
 const ProfileHeader: React.FC = () => {
   const { theme } = useTheme();
-  
+
   return (
     <div className={`rounded-lg shadow w-full mx-auto overflow-hidden p-4 ${theme === 'dark' ? 'bg-dark-100 text-light-900' : 'bg-white text-dark-200'}`}>
       <div className="relative">
@@ -14,10 +14,10 @@ const ProfileHeader: React.FC = () => {
         <img src={ToyotaCar} alt="Cover" className="block md:hidden w-full h-40 object-cover rounded-lg" />
         <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-24">
           <div className="rounded-full overflow-hidden border-4 border-white w-24 h-24 mt-32">
-            <img 
-              src={ProfileMe} 
-              alt="Profile" 
-              className="object-cover w-full h-full" 
+            <img
+              src={ProfileMe}
+              alt="Profile"
+              className="object-cover w-full h-full"
             />
           </div>
         </div>

@@ -1,5 +1,5 @@
 // src/AppRoutes.tsx
-import { BrowserRouter, Routes, Route } from "react-router-dom"; 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";

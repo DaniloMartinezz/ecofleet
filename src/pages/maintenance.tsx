@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '../components/navbar';
-import { Bars3Icon } from '@heroicons/react/24/outline';
 import VehicleData from '../components/maintenance/vehicleData';
 import MensalProgress from '../components/maintenance/mensalProgress';
 import CardDatasMaintenance from '../components/maintenance/cardDatasMaintenance';

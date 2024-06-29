@@ -28,15 +28,15 @@ const Register: React.FC = () => {
                 </div>
             </div>
             <div className="md:w-1/2 h-full">
-                <img 
-                    src={Plants} 
-                    alt="Plants" 
-                    className="hidden md:block object-cover h-full w-full  rounded-[2.5rem]" 
+                <img
+                    src={Plants}
+                    alt="Plants"
+                    className="hidden md:block object-cover h-full w-full  rounded-[2.5rem]"
                 />
-                <img 
-                    src={PlantsMobile} 
-                    alt="Plants Mobile" 
-                    className="block md:hidden object-cover h-full w-full " 
+                <img
+                    src={PlantsMobile}
+                    alt="Plants Mobile"
+                    className="block md:hidden object-cover h-full w-full "
                 />
             </div>
         </div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import StarbucksBg from '../assets/StarbucksBg.png';
 import StarbucksLogo from '../assets/StarbucksLogo.png';
 import { CursorArrowRaysIcon } from '@heroicons/react/24/solid';

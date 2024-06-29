@@ -12,7 +12,6 @@ const progressData = [
 ];
 
 const downloadReport = () => {
-    // Lógica para download do relatório em PDF
     alert("Download do relatório em PDF iniciado!");
 };
 

@@ -19,11 +19,9 @@ const Navbar: React.FC<{ isOpen: boolean; setIsOpen: (isOpen: boolean) => void }
   return (
     <>
       <div
-        className={`${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        } fixed inset-y-0 left-0 w-64 md:w-[25rem] ${
-          theme === 'dark' ? 'bg-dark-200' : 'bg-white'
-        } shadow-lg transform transition-transform duration-300 ease-in-out md:translate-x-0 md:relative md:shadow-none z-50`}
+        className={`${isOpen ? 'translate-x-0' : '-translate-x-full'
+          } fixed inset-y-0 left-0 w-64 md:w-[25rem] ${theme === 'dark' ? 'bg-dark-200' : 'bg-white'
+          } shadow-lg transform transition-transform duration-300 ease-in-out md:translate-x-0 md:relative md:shadow-none z-50`}
       >
         <div className="flex flex-col h-full p-4">
           <div className="flex justify-between items-center mb-4 md:hidden">
@@ -38,8 +36,7 @@ const Navbar: React.FC<{ isOpen: boolean; setIsOpen: (isOpen: boolean) => void }
                 <NavLink
                   to="/dashboard"
                   className={({ isActive }) =>
-                    `flex items-center p-2 rounded ${
-                      isActive ? (theme === 'dark' ? 'bg-dark-100' : 'bg-gray-200') : (theme === 'dark' ? 'hover:bg-dark-100' : 'hover:bg-gray-100')
+                    `flex items-center p-2 rounded ${isActive ? (theme === 'dark' ? 'bg-dark-100' : 'bg-gray-200') : (theme === 'dark' ? 'hover:bg-dark-100' : 'hover:bg-gray-100')
                     }`
                   }
                   onClick={() => setIsOpen(false)}
@@ -52,8 +49,7 @@ const Navbar: React.FC<{ isOpen: boolean; setIsOpen: (isOpen: boolean) => void }
                 <NavLink
                   to="/monitoring"
                   className={({ isActive }) =>
-                    `flex items-center p-2 rounded ${
-                      isActive ? (theme === 'dark' ? 'bg-dark-100' : 'bg-gray-200') : (theme === 'dark' ? 'hover:bg-dark-100' : 'hover:bg-gray-100')
+                    `flex items-center p-2 rounded ${isActive ? (theme === 'dark' ? 'bg-dark-100' : 'bg-gray-200') : (theme === 'dark' ? 'hover:bg-dark-100' : 'hover:bg-gray-100')
                     }`
                   }
                   onClick={() => setIsOpen(false)}
@@ -66,8 +62,7 @@ const Navbar: React.FC<{ isOpen: boolean; setIsOpen: (isOpen: boolean) => void }
                 <NavLink
                   to="/maintenance"
                   className={({ isActive }) =>
-                    `flex items-center p-2 rounded ${
-                      isActive ? (theme === 'dark' ? 'bg-dark-100' : 'bg-gray-200') : (theme === 'dark' ? 'hover:bg-dark-100' : 'hover:bg-gray-100')
+                    `flex items-center p-2 rounded ${isActive ? (theme === 'dark' ? 'bg-dark-100' : 'bg-gray-200') : (theme === 'dark' ? 'hover:bg-dark-100' : 'hover:bg-gray-100')
                     }`
                   }
                   onClick={() => setIsOpen(false)}
@@ -80,8 +75,7 @@ const Navbar: React.FC<{ isOpen: boolean; setIsOpen: (isOpen: boolean) => void }
                 <NavLink
                   to="/profile"
                   className={({ isActive }) =>
-                    `flex items-center p-2 rounded ${
-                      isActive ? (theme === 'dark' ? 'bg-dark-100' : 'bg-gray-200') : (theme === 'dark' ? 'hover:bg-dark-100' : 'hover:bg-gray-100')
+                    `flex items-center p-2 rounded ${isActive ? (theme === 'dark' ? 'bg-dark-100' : 'bg-gray-200') : (theme === 'dark' ? 'hover:bg-dark-100' : 'hover:bg-gray-100')
                     }`
                   }
                   onClick={() => setIsOpen(false)}

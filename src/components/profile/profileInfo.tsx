@@ -12,7 +12,7 @@ const infoData = [
 
 const ProfileInfo: React.FC = () => {
   const { theme } = useTheme();
-  
+
   return (
     <div className={`rounded-lg shadow w-full max-w-4xl mx-auto p-6 ${theme === 'dark' ? 'bg-dark-100 text-light-900' : 'bg-white text-dark-200'}`}>
       <h2 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-light-200' : 'text-dark-100'}`}>Informações Gerais</h2>

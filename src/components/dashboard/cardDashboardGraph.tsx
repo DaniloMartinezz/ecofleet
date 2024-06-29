@@ -41,7 +41,7 @@ const CardDashboardGraph: React.FC<CardDashboardGraphProps> = ({ title, text, da
         borderColor: '#3A5B22',
         backgroundColor: '#3A5B221A',
         fill: true,
-        tension: 0.4, // This makes the line curvy (wave-like)
+        tension: 0.4, 
       },
     ],
   };
@@ -62,7 +62,7 @@ const CardDashboardGraph: React.FC<CardDashboardGraphProps> = ({ title, text, da
         radius: 0,
       },
     },
-    maintainAspectRatio: false, // Ensures the chart can be resized
+    maintainAspectRatio: false, 
   };
 
   return (

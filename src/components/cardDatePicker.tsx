@@ -61,15 +61,14 @@ const CardDatePicker: React.FC = () => {
         const cloneDay = day;
         days.push(
           <div
-            className={`p-2 mx-auto text-center cursor-pointer rounded-full ${
-              !isSameMonth(day, monthStart)
+            className={`p-2 mx-auto text-center cursor-pointer rounded-full ${!isSameMonth(day, monthStart)
                 ? 'text-gray-400'
                 : isSameDay(day, selectedDate)
-                ? 'bg-green-600 text-white'
-                : theme === 'dark'
-                ? 'text-light-200'
-                : 'text-gray-900'
-            }`}
+                  ? 'bg-green-600 text-white'
+                  : theme === 'dark'
+                    ? 'text-light-200'
+                    : 'text-gray-900'
+              }`}
             key={day.toString()}
             onClick={() => setSelectedDate(cloneDay)}
           >

@@ -22,16 +22,16 @@ ChartJS.register(
 
 const CardBarGraph: React.FC = () => {
   const { theme } = useTheme();
-  
+
   const data = {
     labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
     datasets: [
       {
         label: 'Atividade',
         data: [50, 100, 150, 200, 250, 300, 200, 300, 250, 350, 400, 450],
-        backgroundColor: '#3A5B22', // Cor sólida das barras
-        borderRadius: 4, // Bordas arredondadas
-        barThickness: 12, // Espessura das barras
+        backgroundColor: '#3A5B22', 
+        borderRadius: 4, 
+        barThickness: 12, 
       },
     ],
   };
@@ -45,7 +45,7 @@ const CardBarGraph: React.FC = () => {
       title: {
         display: true,
         text: 'Atividade Recente',
-        align: 'start' as 'start', // Ajuste aqui para evitar o erro de tipagem
+        align: 'start' as 'start', 
         font: {
           size: 18,
         },
