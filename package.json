@@ -15,6 +15,7 @@
     "@heroicons/react": "^2.1.4",
     "@types/react-datepicker": "^6.2.0",
     "@types/recharts": "^1.8.29",
+    "@vercel/speed-insights": "^1.0.12",
     "chart.js": "^4.4.3",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
