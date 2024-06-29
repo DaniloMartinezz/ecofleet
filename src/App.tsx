@@ -1,11 +1,11 @@
 import { ThemeProvider } from './context/ThemeContext';
 import AppRoutes from "./Routes";
-import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   return (
     <ThemeProvider>
-      <SpeedInsights />
+      <Analytics />
       <AppRoutes />
     </ThemeProvider>
   );

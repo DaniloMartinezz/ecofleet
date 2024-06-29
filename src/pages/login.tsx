@@ -18,7 +18,9 @@ const Login: React.FC = () => {
     <div className="flex flex-col md:flex-row h-screen font-inter">
       <div className="md:w-1/2 p-5 flex flex-col justify-center md:p-20 lg:p-40 bg-white shadow-lg rounded-lg">
         <h1 className="text-3xl font-bold text-dark-100 mb-4">Bem vindo de volta!</h1>
-        <h2 className="text-sm font-medium text-dark-100 mb-8">Entre com seus dados para realizar login</h2>
+        <h2 className="text-sm font-medium text-dark-100 ">Entre com seus dados para realizar login</h2>
+        <h3 className="text-sm font-bold text-dark-100 py-2 mb-8">Não é necessário preencher os campos! Apenas clique no botão.</h3>
+
         <form onSubmit={handleLogin} className="space-y-4">
           <FormInput label="Email" placeholder="Seu email" />
           <FormInput label="Senha" placeholder="Sua senha" />
