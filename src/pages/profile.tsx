@@ -1,41 +1,58 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from '../components/navbar';
-
-import { Bars3Icon } from '@heroicons/react/24/outline';
 import ProfileHeader from '../components/profile/profileHeader';
-import ToyotaBackground from '../../assets/toyotaBackground.png'
-import ProfileMe from '../../assets/profileMe.png'
 import ProfileUpgrades from '../components/profile/profileUpgrades';
 import ProfileInfo from '../components/profile/profileInfo';
+import Header from '../components/header';
+
 const Profile: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.5,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: 'easeInOut' } },
+  };
 
   return (
     <div className="flex h-screen">
       <Navbar isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
       <div className="flex-1 p-5 overflow-y-auto">
-        <div className="flex justify-between items-center">
-          <h1 className="pb-3 text-2xl text-dark-300">Meu Perfil</h1>
-          {!isMenuOpen && (
-            <button className="md:hidden text-green-green" onClick={() => setIsMenuOpen(true)}>
-              <Bars3Icon className="w-6 h-6 mb-3" />
-            </button>
-          )}
-        </div>
+        <Header title="Meu Perfil" isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <hr />
-        <div className="py-5">
-          <ProfileHeader />
-        </div>
-        <div className="md:flex">
-          <div className="py-5 md:mr-5">
+        <motion.div
+          className="py-5"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.div variants={itemVariants}>
+            <ProfileHeader />
+          </motion.div>
+        </motion.div>
+        <motion.div
+          className="md:flex"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.div className="py-5 md:mr-5" variants={itemVariants}>
             <ProfileUpgrades />
-          </div>
-          <div className="py-5">
+          </motion.div>
+          <motion.div className="py-5" variants={itemVariants}>
             <ProfileInfo />
-          </div>
-        </div>
-
-
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
-// src/components/CardFriendsRanking.tsx
 import React from 'react';
 import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/24/solid';
+import { useTheme } from '../context/ThemeContext';
 
 interface Friend {
   id: number;
@@ -19,11 +19,12 @@ const friendsData: Friend[] = [
 ];
 
 const CardFriendsRanking: React.FC = () => {
+  const { theme } = useTheme();
   const sortedFriends = [...friendsData].sort((a, b) => b.points - a.points);
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 w-full  md:w-[65vh] mr-5 font-inter">
-      <h2 className="text-xl font-semibold mb-4">Friends Ranking</h2>
+    <div className={`shadow-md rounded-lg p-4 w-full md:w-[65vh] mr-5 font-inter ${theme === 'dark' ? 'bg-dark-100 text-light-900' : 'bg-white text-dark-200'}`}>
+      <h2 className={`text-xl font-semibold mb-4 ${theme === 'dark' ? 'text-light-200' : 'text-dark-400'}`}>Ranking de amigos</h2>
       <ul>
         {sortedFriends.map((friend, index) => (
           <li key={friend.id} className="flex items-center justify-between mb-4">
@@ -34,14 +35,14 @@ const CardFriendsRanking: React.FC = () => {
                 className="mr-4 w-10 h-10 rounded-full object-cover"
               />
               <div>
-                <div className="font-medium text-gray-800">{friend.name}</div>
-                <div className="text-sm text-gray-600">
+                <div className={`font-medium ${theme === 'dark' ? 'text-light-200' : 'text-gray-800'}`}>{friend.name}</div>
+                <div className={`text-sm ${theme === 'dark' ? 'text-light-500' : 'text-gray-600'}`}>
                   {friend.points} pontos - {friend.correctness}% Correto
                 </div>
               </div>
             </div>
             <div className="flex items-center">
-              <div className="text-lg font-bold mr-2">{index + 1}</div>
+              <div className={`text-lg font-bold mr-2 ${theme === 'dark' ? 'text-light-300' : 'text-dark-200'}`}>{index + 1}</div>
               {friend.rankingChange > 0 && <ArrowUpIcon className="w-5 h-5 text-green-500" />}
               {friend.rankingChange < 0 && <ArrowDownIcon className="w-5 h-5 text-red-500" />}
               {friend.rankingChange === 0 && <div className="w-5 h-5"></div>}

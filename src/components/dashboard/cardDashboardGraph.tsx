@@ -1,4 +1,3 @@
-// src/components/DashboardGraph.tsx
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import {
@@ -12,6 +11,7 @@ import {
   Legend,
   Filler,
 } from 'chart.js';
+import { useTheme } from '../../context/ThemeContext';
 
 ChartJS.register(
   CategoryScale,
@@ -31,6 +31,8 @@ interface CardDashboardGraphProps {
 }
 
 const CardDashboardGraph: React.FC<CardDashboardGraphProps> = ({ title, text, data }) => {
+  const { theme } = useTheme();
+  
   const chartData = {
     labels: Array(data.length).fill(''),
     datasets: [
@@ -64,9 +66,9 @@ const CardDashboardGraph: React.FC<CardDashboardGraphProps> = ({ title, text, da
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-3 w-40 md:w-48 font-inter">
-      <h2 className="text-sm md:text-base font-medium text-dark-400">{title}</h2>
-      <div className="pt-2 text-xl md:text-2xl text-dark-200 font-semibold">{text}</div>
+    <div className={`shadow-md rounded-lg p-3 w-40 md:w-48 font-inter ${theme === 'dark' ? 'bg-dark-100 text-light-900' : 'bg-white text-dark-200'}`}>
+      <h2 className={`text-sm md:text-base font-medium ${theme === 'dark' ? 'text-light-400' : 'text-dark-400'}`}>{title}</h2>
+      <div className={`pt-2 text-xl md:text-2xl font-semibold ${theme === 'dark' ? 'text-light-200' : 'text-dark-200'}`}>{text}</div>
       <div style={{ height: '40px', width: '130px' }}>
         <Line data={chartData} options={chartOptions} />
       </div>

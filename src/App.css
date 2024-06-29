@@ -2,6 +2,48 @@ body {
   font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: white;
+  background-color: #f5f5f7;
+  transition: background-color 0.3s ease;
 }
 
+.dark body {
+  background-color: #000; /* Cor de fundo para o modo escuro */
+}
+
+
+* {
+
+  scroll-behavior: smooth;
+}
+
+/* Transição para hover nos botões */
+button, .btn {
+  -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilizando a barra de rolagem */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}

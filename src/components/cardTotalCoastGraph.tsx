@@ -1,6 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Tooltip } from 'chart.js';
+import { useTheme } from '../context/ThemeContext';
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip);
 
@@ -54,20 +55,22 @@ const options = {
 };
 
 const CardTotalCostGraph: React.FC = () => {
+  const { theme } = useTheme();
+
   return (
-    <div className="bg-light shadow-md rounded-lg p-4 w-full ">
-      <div className="flex flex-col md:flex-row py-5 justify-between ">
+    <div className={`shadow-md rounded-lg p-4 w-full ${theme === 'dark' ? 'bg-dark-100 text-light-900' : 'bg-light text-dark-200 bg-white'}`}>
+      <div className="flex flex-col md:flex-row py-5 justify-between">
         <div className="flex-1 md:pr-6">
-          <div className="text-xs text-gray-400 uppercase">Esse mês</div>
-          <div className="text-4xl font-bold text-gray-800">R$375,00</div>
-          <div className="text-sm text-gray-500">Gasto total</div>
+          <div className="text-xs uppercase text-gray-400">Esse mês</div>
+          <div className={`text-4xl font-bold ${theme === 'dark' ? 'text-light-200' : 'text-gray-800'}`}>R$375,00</div>
+          <div className={`text-sm ${theme === 'dark' ? 'text-light-300' : 'text-gray-500'}`}>Gasto total</div>
           <div className="text-green-500 font-semibold mt-1">+2.45%</div>
           <div className="mt-6 flex items-center justify-center">
             <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
-            <div className="text-sm text-green-500 font-medium">Monitoramento</div>
+            <div className="text-sm font-medium text-green-500">Monitoramento</div>
           </div>
         </div>
-        <div className="w-full h-48  mt-4 md:w-[65vh]">
+        <div className="w-full h-48 mt-4 md:w-[65vh]">
           <Line data={data} options={options} />
         </div>
       </div>

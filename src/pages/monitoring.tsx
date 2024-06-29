@@ -1,32 +1,42 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from '../components/navbar';
-
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import CardTotalCostGraph from '../components/cardTotalCoastGraph';
-import CardProgress from '../components/cardProgress'
+import CardProgress from '../components/cardProgress';
 import CardDatePicker from '../components/cardDatePicker';
 import CardCupom from '../components/cardCupom';
 import CardMonitoringDailyGraph from '../components/monitoring/cardMonitoringDailyGraph';
 import CardMonitoringFeedback from '../components/monitoring/cardMonitoringFeedback';
 import CardResultsGraph from '../components/cardResultsGraph';
 import CardTasks from '../components/cardTasks';
+import Header from '../components/header';
+
 const Monitoring: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.5,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: 'easeInOut' } },
+  };
 
   return (
     <div className="flex h-screen">
       <Navbar isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
       <div className="flex-1 p-5 overflow-y-auto">
-        <div className="flex justify-between items-center">
-          <h1 className="pb-3 text-2xl text-dark-300">Monitoramento</h1>
-          {!isMenuOpen && (
-            <button className="md:hidden text-green-green" onClick={() => setIsMenuOpen(true)}>
-              <Bars3Icon className="w-6 h-6 mb-3" />
-            </button>
-          )}
-        </div>
+        <Header title="Monitoramento" isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <hr />
-        <div className="md:flex  md:items-center md:p-5">
+        <div className="md:flex md:items-center md:p-5">
           <div className="py-5 md:py-0 md:mr-5">
             <CardTotalCostGraph />
           </div>
@@ -34,28 +44,35 @@ const Monitoring: React.FC = () => {
             <CardMonitoringDailyGraph />
           </div>
         </div>
-        <div className="md:flex  md:items-center md:p-5 ">
-          <div className="md:mr-5">
+        <motion.div
+          className="md:flex md:items-center md:p-5"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.div className="md:mr-5" variants={itemVariants}>
             <CardProgress />
-          </div>
-          <div className="py-5 md:py-0">
+          </motion.div>
+          <motion.div className="py-5 md:py-0" variants={itemVariants}>
             <CardMonitoringFeedback />
-          </div>
-        </div>
-
-          <div className="md:flex md:items-center md:p-0 md:justify-around">
-          <div className="mt-5 flex justify-center items-center md:mr-5">
-          <CardDatePicker />
-        </div>
-        <div className="py-5 md:py-0">
-          <CardTasks />
-        </div>
-        <div className="py-5 md:py-0 md:mr-5">
-          <CardResultsGraph />
-        </div>
-          </div>
-
-
+          </motion.div>
+        </motion.div>
+        <motion.div
+          className="md:flex md:items-center md:p-0 md:justify-around"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.div className="mt-5 flex justify-center items-center md:mr-5" variants={itemVariants}>
+            <CardDatePicker />
+          </motion.div>
+          <motion.div className="py-5 md:py-0" variants={itemVariants}>
+            <CardTasks />
+          </motion.div>
+          <motion.div className="py-5 md:py-0 md:mr-5" variants={itemVariants}>
+            <CardResultsGraph />
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );

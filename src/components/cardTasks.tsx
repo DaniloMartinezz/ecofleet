@@ -1,7 +1,7 @@
-// src/components/CardTasks.tsx
 import React, { useState, useCallback, useEffect } from 'react';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { useTheme } from '../context/ThemeContext';
 
 interface Task {
   id: number;
@@ -18,6 +18,8 @@ interface TaskProps {
 
 const TaskItem: React.FC<TaskProps> = ({ task, index, moveTask, toggleTask }) => {
   const ref = React.useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
+
   const [, drop] = useDrop({
     accept: 'task',
     hover(item: { index: number }, monitor) {
@@ -62,9 +64,7 @@ const TaskItem: React.FC<TaskProps> = ({ task, index, moveTask, toggleTask }) =>
   return (
     <div
       ref={ref}
-      className={`flex items-center justify-between p-2 ${
-        isDragging ? 'opacity-50' : 'opacity-100'
-      }`}
+      className={`flex items-center justify-between  p-2 ${isDragging ? 'opacity-50' : 'opacity-100'} ${theme === 'dark' ? ' text-light-900' : 'bg-light-Base text-dark-200'}`}
       style={{ cursor: 'move' }}
     >
       <div className="flex items-center">
@@ -74,16 +74,17 @@ const TaskItem: React.FC<TaskProps> = ({ task, index, moveTask, toggleTask }) =>
           onChange={() => toggleTask(task.id)}
           className="mr-2"
         />
-        <span className={`font-medium ${task.completed ? 'text-green-green' : 'text-gray-600'}`}>
+        <span className={`font-medium ${task.completed ? 'text-green-green' : theme === 'dark' ? 'text-light-400' : 'text-gray-600'}`}>
           {task.text}
         </span>
       </div>
-      <div className="text-gray-400 cursor-pointer md:ml-24">⋮⋮</div>
+      <div className={`cursor-pointer md:ml-24 ${theme === 'dark' ? 'text-light-500' : 'text-gray-400'}`}>⋮⋮</div>
     </div>
   );
 };
 
 const CardTasks: React.FC = () => {
+  const { theme } = useTheme();
   const [tasks, setTasks] = useState<Task[]>([
     { id: 1, text: 'Troca de Pneus', completed: false },
     { id: 2, text: 'Melhoria Escapamento', completed: true },
@@ -123,10 +124,10 @@ const CardTasks: React.FC = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="bg-white shadow-md rounded-lg p-4 w-full  mx-auto">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">Tasks</h2>
-          <div className="text-gray-400  cursor-pointer">⋮⋮</div>
+      <div className={`shadow-md rounded-lg p-4 w-full mx-auto ${theme === 'dark' ? 'bg-dark-100 text-light-900' : 'bg-white text-dark-200'}`}>
+        <div className="flex justify-between items-center mb-4 ">
+          <h2 className={`text-xl font-semibold ${theme === 'dark' ? 'text-light-200' : 'text-dark-200'}`}>Tasks</h2>
+          <div className={`cursor-pointer ${theme === 'dark' ? 'text-light-400' : 'text-gray-400'}`}>⋮⋮</div>
         </div>
         {tasks.map((task, index) => (
           <TaskItem

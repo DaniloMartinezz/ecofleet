@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameMonth, isSameDay } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { useTheme } from '../context/ThemeContext';
 
-const DatePicker: React.FC = () => {
+const CardDatePicker: React.FC = () => {
+  const { theme } = useTheme();
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
@@ -31,7 +33,7 @@ const DatePicker: React.FC = () => {
 
     for (let i = 0; i < 7; i++) {
       days.push(
-        <div className="text-xs font-medium text-center text-gray-500" key={i}>
+        <div className={`text-xs font-medium text-center ${theme === 'dark' ? 'text-light-400' : 'text-gray-500'}`} key={i}>
           {format(addDays(startDate, i), dateFormat, { locale: ptBR }).substring(0, 2)}
         </div>
       );
@@ -64,6 +66,8 @@ const DatePicker: React.FC = () => {
                 ? 'text-gray-400'
                 : isSameDay(day, selectedDate)
                 ? 'bg-green-600 text-white'
+                : theme === 'dark'
+                ? 'text-light-200'
                 : 'text-gray-900'
             }`}
             key={day.toString()}
@@ -85,7 +89,7 @@ const DatePicker: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow p-4 w-80">
+    <div className={`rounded-lg shadow p-4 w-80 ${theme === 'dark' ? 'bg-dark-100 text-light-900' : 'bg-white text-dark-200'}`}>
       {renderHeader()}
       {renderDays()}
       {renderCells()}
@@ -93,4 +97,4 @@ const DatePicker: React.FC = () => {
   );
 };
 
-export default DatePicker;
+export default CardDatePicker;
